@@ -115,3 +115,10 @@ body {
   position: absolute;
   background-image: url(imgs/disparo.png);
 }
+
+#explosao1,
+#explosao2 {
+  width: 15px;
+  height: 87px;
+  position: absolute;
+}
