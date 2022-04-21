@@ -28,6 +28,24 @@ function start() {
 
   jogo.pressionou = []
 
+  var somDisparo = document.getElementById('somDisparo')
+  var somExplosao = document.getElementById('somExplosao')
+  var musica = document.getElementById('musica')
+  var somGameover = document.getElementById('somGameover')
+  var somPerdido = document.getElementById('somPerdido')
+  var somResgate = document.getElementById('somResgate')
+
+  //Música em loop
+  musica.addEventListener(
+    'ended',
+    function () {
+      musica.currentTime = 0
+      musica.play()
+    },
+    false,
+  )
+  musica.play()
+
   //Verifica se o usuário pressionou alguma tecla
   $(document).keydown(function (e) {
     jogo.pressionou[e.which] = true
@@ -118,6 +136,7 @@ function start() {
   //Função que serve para disparar um projétil no jogo
   function disparo() {
     if (podeAtirar == true) {
+      somDisparo.play()
       podeAtirar = false
 
       topo = parseInt($('#jogador').css('top'))
@@ -156,6 +175,7 @@ function start() {
 
     // jogador com o inimigo1
     if (colisao1.length > 0) {
+      somExplosao.play()
       energiaAtual--
       inimigo1X = parseInt($('#inimigo1').css('left'))
       inimigo1Y = parseInt($('#inimigo1').css('top'))
@@ -168,6 +188,7 @@ function start() {
 
     // jogador com o inimigo2
     if (colisao2.length > 0) {
+      somExplosao.play()
       energiaAtual--
       inimigo2X = parseInt($('#inimigo2').css('left'))
       inimigo2Y = parseInt($('#inimigo2').css('top'))
@@ -180,6 +201,7 @@ function start() {
 
     // jogador com o amigo
     if (colisao5.length > 0) {
+      somResgate.play()
       salvos++
       reposicionaAmigo()
       $('#amigo').remove()
@@ -263,6 +285,7 @@ function start() {
 
   //Explosão3
   function explosao3(amigoX, amigoY) {
+    somPerdido.play()
     $('#fundoGame').append("<div id='explosao3' class='anima4'></div")
     $('#explosao3').css('top', amigoY)
     $('#explosao3').css('left', amigoX)
