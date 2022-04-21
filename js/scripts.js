@@ -187,6 +187,7 @@ function start() {
 
     // Disparo com o inimigo1
     if (colisao3.length > 0) {
+      velocidade += 0.3
       pontos = pontos + 100
       inimigo1X = parseInt($('#inimigo1').css('left'))
       inimigo1Y = parseInt($('#inimigo1').css('top'))
